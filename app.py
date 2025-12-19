@@ -4,6 +4,7 @@ board = [["", "", ""],
          ["", "", ""],
          ["", "", ""]]
 
+
 def clear_screen():
     """Очищення екрану консолі"""
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -54,6 +55,7 @@ def show_board(board):
             print("-----------")
     print()
 
+
 def play_game():
     """Основна логіка гри"""
     player="X"
@@ -64,12 +66,12 @@ def play_game():
       coordinates = input(f"Хід {player} (1 ... 9): ")
       
       # 2 крок перевірки
-      # перевірка на двоцифрове число
+      # перевірка на число
       if not (coordinates.isdigit() and len(coordinates) == 1):
           print(" Помилка Введи рівно одну цифру")
           continue 
       
-      # Перевірка на правильність кординат
+      # Перевірка на правильність кординати
       if coordinates not in '123456789':
           print(" Помилка тільки цифри 1, 2, 3, 4, 5, 6, 7, 8, 9")
           continue
@@ -84,7 +86,7 @@ def play_game():
           continue
       
       #обробка ходу 
-      board[line][column] = player  # або "O" в залежності від гравця
+      board[line][column] = player 
       winner = check_winner(board)
       if winner:
           show_board(board)
@@ -116,7 +118,7 @@ def check_winner(board):
     win_combinations = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8],  # Горизонталі
         [0, 3, 6], [1, 4, 7], [2, 5, 8],  # Вертикалі
-        [0, 4, 8], [2, 4, 6]               # Діагоналі
+        [0, 4, 8], [2, 4, 6]              # Діагоналі
     ]
     
     for combo in win_combinations:
@@ -131,6 +133,7 @@ def check_winner(board):
         return 'Draw'
     
     return None
+
 
 if __name__ == "__main__":
     show_welcome()
