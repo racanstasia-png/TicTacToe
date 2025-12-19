@@ -127,7 +127,7 @@ def check_winner(board):
             return s1
 
     # Перевірка на нічию
-    if all(cell in ['X', 'O'] for cell in board):
+    if all(cell in ['X', 'O'] for row in board for cell in row):
         return 'Draw'
     
     return None
